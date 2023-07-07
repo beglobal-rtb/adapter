@@ -10,7 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/BeGlobal Adapter" />
+            <option value="$PROJECT_DIR$/BeGlobalAdapter" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
