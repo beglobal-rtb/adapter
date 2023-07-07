@@ -15,6 +15,6 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "BeGlobal Adapter"
+rootProject.name = "BeGlobalAdapter"
 include ':app'
 include ':BeGlobalAdapter'
