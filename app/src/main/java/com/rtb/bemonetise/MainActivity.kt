@@ -19,27 +19,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
         loadAd()
-        loadInterstitial()
     }
 
     private fun loadAd() {
         val adRequest = AdManagerAdRequest.Builder().addCustomTargeting("hb_format", "amp").build()
         binding.bannerAd.loadAd(adRequest)
-    }
-
-
-    private fun loadInterstitial(){
-        val adRequest = AdManagerAdRequest.Builder().build()
-        InterstitialAd.load(this, "/21952429235,21952429235/be_sun_com.livecameracctv.videocamerarecorder_appinterstitial1", adRequest, object: InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(p0: LoadAdError) {
-                Log.d("Ads", "onAdFailedToLoad: $p0")
-            }
-
-            override fun onAdLoaded(p0: InterstitialAd) {
-                super.onAdLoaded(p0)
-                Log.d("Ads", "onAdLoaded:")
-            }
-        })
     }
 
 

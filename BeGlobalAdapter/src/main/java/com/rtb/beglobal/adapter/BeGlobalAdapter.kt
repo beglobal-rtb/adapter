@@ -14,6 +14,7 @@ class BeGlobalAdapter : Adapter() {
     private lateinit var rewardedLoaded: RewardedLoader
     private lateinit var rewardedInterstitialLoader: RewardedInterstitialLoader
     private lateinit var appOpenAdLoader: AppOpenAdLoader
+    private lateinit var nativeAdLoaded: NativeAdLoader
     private val TAG: String = this::class.java.simpleName
 
     companion object {
@@ -45,9 +46,9 @@ class BeGlobalAdapter : Adapter() {
     override fun getSDKVersionInfo(): VersionInfo {
         val versionString = MobileAds.getVersion()
         return VersionInfo(
-            versionString.majorVersion,
-            versionString.minorVersion,
-            versionString.microVersion
+                versionString.majorVersion,
+                versionString.minorVersion,
+                versionString.microVersion
         )
     }
 
@@ -77,10 +78,13 @@ class BeGlobalAdapter : Adapter() {
 
     override fun loadRewardedInterstitialAd(mediationRewardedAdConfiguration: MediationRewardedAdConfiguration, callback: MediationAdLoadCallback<MediationRewardedAd, MediationRewardedAdCallback>) {
         Logger.INFO.log(TAG, "loadRewardedInterstitialAd:")
-        rewardedInterstitialLoader = RewardedInterstitialLoader(
-            mediationRewardedAdConfiguration,
-            callback
-        )
+        rewardedInterstitialLoader = RewardedInterstitialLoader(mediationRewardedAdConfiguration, callback)
         rewardedInterstitialLoader.loadAd()
+    }
+
+    override fun loadNativeAd(mediationNativeAdConfiguration: MediationNativeAdConfiguration, callback: MediationAdLoadCallback<UnifiedNativeAdMapper, MediationNativeAdCallback>) {
+        Logger.INFO.log(TAG, "loadNativeAd:")
+        nativeAdLoaded = NativeAdLoader(mediationNativeAdConfiguration, callback)
+        nativeAdLoaded.loadAd()
     }
 }
